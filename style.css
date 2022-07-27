@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "bold";
+  src: url("assets/font/IRANSansWeb\(FaNum\)_Bold.eot") format("eot"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Bold.woff") format("woff"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "light";
+  src: url("assets/font/IRANSansWeb\(FaNum\)_Light.eot") format("eot"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Light.woff") format("woff"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "medium";
+  src: url("assets/font/IRANSansWeb\(FaNum\)_Medium.eot") format("eot"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Medium.woff") format("woff"),
+    url("assets/font/IRANSansWeb\(FaNum\)_Medium.woff2") format("woff2");
+}
+
+/*     init     */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  font-family: "medium";
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+  background-image: url(assets/pexels-joyston-judah-933054.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
