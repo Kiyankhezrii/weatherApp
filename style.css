@@ -61,10 +61,6 @@ body {
     font-size: 2.5rem;
     color: #FEFEFE;
 }
-.name {
-}
-.date {
-}
 .weather-infos {
     display: flex;
     justify-content: space-between;
@@ -85,12 +81,6 @@ body {
 .left__weather-infos img{
     width: 20%;
 }
-.info-degree {
-}
-.degree {
-}
-.degree-title {
-}
 .right__weather-infos {
     width: 75%;
     display: grid;
@@ -110,13 +100,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
-.number {
-}
-.info-text {
-}
-.forecast {
-
 }
 .forecast-items {
     display: flex;
@@ -143,8 +126,4 @@ body {
 }
 .item img{
     width: 20%;
-}
-.date {
-}
-.time {
 }
