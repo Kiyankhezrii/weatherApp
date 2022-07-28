@@ -44,9 +44,11 @@ const monthNames = [
   "December",
 ];
 let date = new Date();
+let city = "";
 
 const getData = async function (cityName) {
   try {
+    city = cityName;
     const res = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=0ba01d1c3a4c4c67a4662712223003&q=${cityName}&days=6&aqi=yes&alerts=no`
     );
@@ -72,7 +74,7 @@ const renderInfo = function (datas) {
     weekday[date.getDay()]
   } ${date.getDate()} ${monthNames[date.getMonth()]}`;
 
-  typeOfWeather.innerHTML=""
+  typeOfWeather.innerHTML = "";
   const degreeHtml = `
       <img src="${current.condition.icon}" alt="icon of weather" />
       <div class="info-degree">
@@ -125,3 +127,9 @@ form.addEventListener("submit", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   getData("mahabad");
 });
+
+// refresh every 1minute
+setInterval(() => {
+  getData(city);
+  console.log(city);
+}, 60000);
