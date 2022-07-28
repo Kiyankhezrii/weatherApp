@@ -114,6 +114,21 @@ const renderInfo = function (datas) {
       "p"
     ).textContent = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   }, 1000);
+
+  // add info of 2day after
+  const newForecast = forecastday.filter(
+    (f) => f.date.split(" ")[0] !== location.localtime.split(" ")[0]
+  );
+  console.log(newForecast);
+  newForecast.forEach((f) => {
+    const html = ` <li class="item">
+            <p class="date">${f.date.split(" ")[0]}</p>
+            <img src=${f.day.condition.icon} alt="icon of weather" />
+             <p class="times">${f.day.avgtemp_c}°</p> 
+          </li>
+          `;
+    forecast.insertAdjacentHTML("beforeend", html);
+  });
 };
 
 // Event listeners
@@ -131,5 +146,4 @@ document.addEventListener("DOMContentLoaded", () => {
 // refresh every 1minute
 setInterval(() => {
   getData(city);
-  console.log(city);
 }, 60000);
