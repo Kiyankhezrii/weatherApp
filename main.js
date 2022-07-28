@@ -12,7 +12,7 @@ const forecast = document.querySelector(".forecast-items");
 
 const maxTemp = document.querySelector(".max");
 const lowTemp = document.querySelector(".low");
-const precip = document.querySelector(".precip");
+const rain = document.querySelector(".rain");
 const pressure = document.querySelector(".pressure");
 const windDir = document.querySelector(".wind_dir");
 const windMph = document.querySelector(".wind_mph");
@@ -59,27 +59,57 @@ const getData = async function (cityName) {
 };
 
 const renderInfo = function (datas) {
-  console.log(datas);
-  //   const { current, location } = datas[0];
-  //   console.log(current);
-  //   console.log(location);
+  const {
+    current,
+    forecast: { forecastday },
+    location,
+  } = datas[0];
 
-  //   infoNameCity.querySelector(
-  //     ".name"
-  //   ).textContent = `${location.name}, ${location.country}`;
-  //   infoNameCity.querySelector(".date").textContent = `${
-  //     weekday[date.getDay()]
-  //   } ${date.getDate()} ${monthNames[date.getMonth()]}`;
+  console.log(current);
+  console.log(forecastday);
+  console.log(location);
 
-  //   const degreeHtml = `
-  //     <img src="${current.condition.icon}" alt="icon of weather" />
-  //     <div class="info-degree">
-  //         <h2 class="degree">${current.temp_c}<sup>°</sup></h2>
-  //         <p class="degree-title">${current.condition.text}</p>
-  //     </div>
-  //   `;
+  infoNameCity.querySelector(
+    ".name"
+  ).textContent = `${location.name}, ${location.country}`;
+  infoNameCity.querySelector(".date").textContent = `${
+    weekday[date.getDay()]
+  } ${date.getDate()} ${monthNames[date.getMonth()]}`;
 
-  //   typeOfWeather.insertAdjacentHTML("afterbegin", degreeHtml);
+  const degreeHtml = `
+      <img src="${current.condition.icon}" alt="icon of weather" />
+      <div class="info-degree">
+          <h2 class="degree">${current.temp_c}<sup>°</sup></h2>
+          <p class="degree-title">${current.condition.text}</p>
+      </div>
+    `;
+  typeOfWeather.insertAdjacentHTML("afterbegin", degreeHtml);
+
+  // maxTemp
+  maxTemp.querySelector("p").textContent = `${forecastday[0].day.maxtemp_c}°`;
+
+  // Windmph
+  windMph.querySelector("p").textContent = `${current.wind_mph}mph`;
+
+  // sunrise
+  sunrise.querySelector("p").textContent = `${forecastday[0].astro.sunrise}`;
+
+  // low
+  lowTemp.querySelector("p").textContent = `${forecastday[0].day.mintemp_c}°`;
+
+  // rain
+  rain.querySelector(
+    "p"
+  ).textContent = `${forecastday[0].day.daily_chance_of_rain}%`;
+
+  // sunset
+  sunset.querySelector("p").textContent = `${forecastday[0].astro.sunset}`;
+
+  // time
+  time.querySelector("p").textContent = `${location.localtime}`;
+  setInterval(() => {
+    time.querySelector("p").textContent = `${location.localtime}`;
+  }, 60000);
 };
 
 // Event listeners
