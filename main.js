@@ -43,7 +43,7 @@ const monthNames = [
   "November",
   "December",
 ];
-const date = new Date();
+let date = new Date();
 
 const getData = async function (cityName) {
   try {
@@ -65,10 +65,6 @@ const renderInfo = function (datas) {
     location,
   } = datas[0];
 
-  console.log(current);
-  console.log(forecastday);
-  console.log(location);
-
   infoNameCity.querySelector(
     ".name"
   ).textContent = `${location.name}, ${location.country}`;
@@ -76,6 +72,7 @@ const renderInfo = function (datas) {
     weekday[date.getDay()]
   } ${date.getDate()} ${monthNames[date.getMonth()]}`;
 
+  typeOfWeather.innerHTML=""
   const degreeHtml = `
       <img src="${current.condition.icon}" alt="icon of weather" />
       <div class="info-degree">
@@ -106,10 +103,15 @@ const renderInfo = function (datas) {
   sunset.querySelector("p").textContent = `${forecastday[0].astro.sunset}`;
 
   // time
-  time.querySelector("p").textContent = `${location.localtime}`;
+  time.querySelector(
+    "p"
+  ).textContent = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   setInterval(() => {
-    time.querySelector("p").textContent = `${location.localtime}`;
-  }, 60000);
+    date = new Date();
+    time.querySelector(
+      "p"
+    ).textContent = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }, 1000);
 };
 
 // Event listeners
@@ -121,5 +123,5 @@ form.addEventListener("submit", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  getData("ahvaz");
+  getData("mahabad");
 });
