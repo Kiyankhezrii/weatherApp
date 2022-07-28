@@ -83,7 +83,7 @@ body {
 .right__weather-infos {
   width: 75%;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   row-gap: 4rem;
   column-gap: 8rem;
   background-color: #fefefe;
@@ -94,16 +94,16 @@ body {
   color: #8170e3;
   font-weight: bold;
 }
-.number{
-    width: 6rem;
-    text-align: center;
+.number {
+  width: 6rem;
+  text-align: center;
 }
 .time {
-    width: 100%;
+  width: 100%;
   grid-column: 1/-1;
 }
-.number-time{
-    width: 100%;
+.number-time {
+  width: 100%;
 }
 .single-info {
   display: flex;
@@ -115,7 +115,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
   gap: 4rem;
 }
 .item {
